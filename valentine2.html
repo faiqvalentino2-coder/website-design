@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Valentine Ultimate 💖</title>
+
+<style>
+body {
+    margin: 0;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #ff758c, #ff7eb3);
+    height: 100vh;
+}
+
+/* CENTER PERFECT */
+.container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 10;
+}
+
+/* Judul */
+h1 {
+    color: white;
+    font-size: 2.8em;
+    margin-bottom: 20px;
+}
+
+/* Button */
+button {
+    padding: 12px 25px;
+    font-size: 18px;
+    border: none;
+    border-radius: 30px;
+    background-color: white;
+    color: #e91e63;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: #ffe6ec;
+}
+
+/* Gambar Tengah Banget */
+#mainImage {
+    display: none;
+    width: 320px;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+    animation: zoomIn 1.5s ease forwards;
+}
+
+/* Zoom Romantic */
+@keyframes zoomIn {
+    from {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Typing Text */
+#loveText {
+    margin-top: 20px;
+    font-size: 22px;
+    color: white;
+    height: 30px;
+}
+
+/* Sparkle */
+.sparkle {
+    position: fixed;
+    color: white;
+    font-size: 14px;
+    animation: sparkleAnim linear infinite;
+    pointer-events: none;
+}
+
+@keyframes sparkleAnim {
+    0% { transform: translateY(0); opacity: 0; }
+    50% { opacity: 1; }
+    100% { transform: translateY(-20px); opacity: 0; }
+}
+
+/* Mawar */
+.rose {
+    position: fixed;
+    top: -50px;
+    font-size: 28px;
+    animation: fall linear forwards;
+    pointer-events: none;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Kucing */
+.falling-cat {
+    position: fixed;
+    top: -100px;
+    width: 90px;
+    animation: catFall linear forwards;
+    pointer-events: none;
+}
+
+@keyframes catFall {
+    to {
+        transform: translateY(110vh) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+</style>
+</head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<body>
+
+<div class="container">
+    <h1>💌 BUAT YUMIIII 💕</h1>
+    <button onclick="showImage()">Klik Aku 😼</button>
+    <br><br>
+    <img id="mainImage" src="kucing-valentine.png"
+    <div id="loveText"></div>
+</div>
+
+<script>
+
+/* SHOW IMAGE + TYPING */
+function showImage() {
+    const img = document.getElementById("mainImage");
+    img.style.display = "block";
+    typeText("HAPPY VALENTINE YUMIIIII💖😼");
+}
+
+/* Typing Effect */
+function typeText(text) {
+    let i = 0;
+    const speed = 60;
+    const loveText = document.getElementById("loveText");
+    loveText.innerHTML = "";
+
+    function typing() {
+        if (i < text.length) {
+            loveText.innerHTML += text.charAt(i);
+            i++;
+            setTimeout(typing, speed);
+        }
+    }
+    typing();
+}
+
+/* Sparkle Background */
+function createSparkle() {
+    const sparkle = document.createElement("div");
+    sparkle.classList.add("sparkle");
+    sparkle.innerHTML = "✨";
+    sparkle.style.left = Math.random() * 100 + "vw";
+    sparkle.style.top = Math.random() * 100 + "vh";
+    sparkle.style.animationDuration = Math.random() * 2 + 2 + "s";
+    document.body.appendChild(sparkle);
+    setTimeout(() => sparkle.remove(), 3000);
+}
+setInterval(createSparkle, 200);
+
+/* Mawar */
+function createRose() {
+    const rose = document.createElement("div");
+    rose.classList.add("rose");
+    rose.innerHTML = "🌹";
+    rose.style.left = Math.random() * 100 + "vw";
+    rose.style.animationDuration = Math.random() * 3 + 3 + "s";
+    document.body.appendChild(rose);
+    setTimeout(() => rose.remove(), 5000);
+}
+setInterval(createRose, 150);
+
+/* Kucing */
+function createCat() {
+    const cat = document.createElement("img");
+    cat.src = "kucing-valentine.png";
+    cat.classList.add("falling-cat");
+    cat.style.left = Math.random() * 100 + "vw";
+    cat.style.animationDuration = Math.random() * 4 + 3 + "s";
+    document.body.appendChild(cat);
+    setTimeout(() => cat.remove(), 6000);
+}
+setInterval(createCat, 2500);
+
+</script>
+
+</body>
+</html>
